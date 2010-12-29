@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Welcome to Buzzard! The fully customizable alert system for Android.</string>
+    <string name="hello">Welcome to Buzzard!</string>
     <string name="app_name">Buzzard</string>
-    <string name="app_version">0.1</string>
+    <string name="app_version">0.2</string>
 </resources>
