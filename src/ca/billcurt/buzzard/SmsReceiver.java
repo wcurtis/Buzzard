@@ -4,10 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.telephony.SmsMessage;
+import android.util.Log;
 import android.widget.Toast;
 
 public class SmsReceiver extends BroadcastReceiver {
+
+	private static final String TAG = "SmsReceiver";
 
 	public SmsReceiver() {
 
@@ -15,7 +19,27 @@ public class SmsReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		toastMessage(context, intent);
+
+		doDefaultVibration(context);
+		
+	}
+
+	private void doDefaultVibration(Context context) {
+		
+		Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+		
+		if (vibrator == null) {
+			Log.v(TAG, "Vibrator Service is null.");
+			return;
+		}
+		
+		long milliseconds = 1000;
+		vibrator.vibrate(milliseconds);
+
+		// Vibrate in a Pattern with 500ms on, 500ms off for 5 times
+		// long[] pattern = { 500, 300 };
+		// v.vibrate(pattern, 5);
+
 	}
 
 	private void toastMessage(Context context, Intent intent) {
